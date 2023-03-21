@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 
 let Login = lazy(() => import("../pages/Login"))
 let Home = lazy(() => import("../pages/Home"))
+let NotFoundPage = lazy(() => import("../pages/NotFoundPage"))
 
 
 function RouterIndex() {
@@ -13,6 +14,8 @@ function RouterIndex() {
                     <Routes>
                         <Route path="/" element={<Login />} />
                         <Route path="/home" element={<Home />} />
+                        <Route path="/404" element={<NotFoundPage/>}/>
+                        <Route path="*" element={<Navigate to={'/404'}/>} />
                     </Routes>
                 </Suspense>
             </Router>
