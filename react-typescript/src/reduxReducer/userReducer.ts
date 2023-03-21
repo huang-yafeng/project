@@ -11,9 +11,7 @@ const userReducer = (state = params, action: any) => {
             return { ...state, ...action.payload }
         case userType.user_add:
             return { ...state, ...action.payload }
-
-            break;
-
+            
         default:
             break;
     }
