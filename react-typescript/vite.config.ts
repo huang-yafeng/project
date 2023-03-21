@@ -29,8 +29,6 @@ export default defineConfig({
     },
   },
 
-
-
   // 配置反向代理
   server: {
     host: 'localhost',  // 启动后浏览器窗口输入地址就可以进行访问
@@ -67,8 +65,8 @@ export default defineConfig({
     },
   },
   //配置打包
-  build: {
-    outDir: "dist"
-  },
+  // build: {
+  //   outDir: "dist"
+  // },
 
 })
