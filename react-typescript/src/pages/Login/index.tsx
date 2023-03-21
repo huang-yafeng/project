@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
-import { Button, Space } from "antd"
+import { Button, Space, Spin } from "antd"
 
 import { add, query } from "../../action/userAction"
 import './index.less'
@@ -31,6 +31,9 @@ function Login(props: any) {
                 <Button type="link">Link Button</Button>
             </Space>
             <div className="box"></div>
+            <Spin tip="Loading" size="large">
+                <div className="content" />
+            </Spin>
         </div>
     )
 }

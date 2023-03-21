@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import Loading from "./loading";
 
 let Login = lazy(() => import("../pages/Login"))
 let Home = lazy(() => import("../pages/Home"))
@@ -10,7 +11,7 @@ function RouterIndex() {
     return (
         <div>
             <Router>
-                <Suspense fallback={<div>...加载中</div>}>
+                <Suspense fallback={<Loading/>}>
                     <Routes>
                         <Route path="/" element={<Login />} />
                         <Route path="/home" element={<Home />} />
