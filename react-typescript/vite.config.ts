@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 
-    // 配置反向代理
+  // 配置反向代理
   server: {
     host: 'localhost',  // 启动后浏览器窗口输入地址就可以进行访问
     port: 8080, // 端口号
@@ -40,4 +40,9 @@ export default defineConfig({
       }
     },
   },
+  //配置打包
+  build: {
+    outDir: "dist"
+  },
+
 })

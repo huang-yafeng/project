@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { Button, Space } from "antd"
 
 import { add, query } from "../../action/userAction"
+import './index.less'
 
 function Login(props: any) {
     console.log(props);
@@ -29,6 +30,7 @@ function Login(props: any) {
                 <Button type="text">Text Button</Button>
                 <Button type="link">Link Button</Button>
             </Space>
+            <div className="box"></div>
         </div>
     )
 }
