@@ -4,7 +4,7 @@ export default {
     query: (params: any) => {
         return axios({
             method: "GET",
-            url: "/api/",
+            url: "/api/login.php",
             params
         })
     },

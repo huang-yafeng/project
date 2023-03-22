@@ -3,22 +3,15 @@ import { connect } from "react-redux"
 import { Button, Space } from "antd"
 
 import { add, query } from "../../action/userAction"
+import userModel from "../../server/userServer"
 import './index.less'
 
 function Login(props: any) {
-    console.log(props);
 
-    const getAdd = () => {
-        let params = {
-            name: "黄亚枫",
-            dataList: [
-                { id: 1, msg: "msg1" },
-                { id: 2, msg: "msg2" },
-                { id: 3, msg: "msg3" },
-            ]
-        }
-
-        props.add(params)
+    const getAdd =async () => {
+        const {data}=await userModel.query({})
+        console.log(data,'data');
+        
     }
 
     return (
