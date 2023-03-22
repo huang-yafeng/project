@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
-import { Button, Space } from "antd"
+import { Button, Space } from 'antd-mobile'
+import { DemoBlock } from 'demos'
 
 import { add, query } from "../../action/userAction"
 import userModel from "../../server/userServer"
@@ -8,21 +9,26 @@ import './index.less'
 
 function Login(props: any) {
 
-    const getAdd =async () => {
-        const {data}=await userModel.query({})
-        console.log(data,'data');
-        
+    const getAdd = async () => {
+        const { data } = await userModel.query({})
+        console.log(data, 'data');
+
     }
 
     return (
         <div>
             <Space wrap>
-                <Button type="primary" onClick={getAdd}>Primary Button</Button>
-                <Button>Default Button</Button>
-                <Button type="dashed">Dashed Button</Button>
-                <Button type="text">Text Button</Button>
-                <Button type="link">Link Button</Button>
+                <Button color='primary' fill='solid'>
+                    Solid
+                </Button>
+                <Button color='primary' fill='outline'>
+                    Outline
+                </Button>
+                <Button color='primary' fill='none'>
+                    None
+                </Button>
             </Space>
+
             <div className="box"></div>
         </div>
     )

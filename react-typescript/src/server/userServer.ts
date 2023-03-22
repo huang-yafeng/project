@@ -3,7 +3,7 @@ import axios from "./axios";
 export default {
     query: (params: any) => {
         return axios({
-            method: "GET",
+            method: "POST",
             url: "/api/login.php",
             params
         })

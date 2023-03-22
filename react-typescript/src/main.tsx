@@ -5,7 +5,7 @@ import { PersistGate } from "redux-persist/integration/react"
 
 import { store, persistor } from "./store"
 import App from "./App";
-import 'antd/dist/reset.css';
+//import 'antd/dist/reset.css';
 
 const continent: any = document.getElementById('root')
 const root = createRoot(continent);
