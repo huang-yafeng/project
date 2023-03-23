@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
 import { Button, Space } from 'antd-mobile'
-import { DemoBlock } from 'demos'
 
 import { add, query } from "../../action/userAction"
 import userModel from "../../server/userServer"

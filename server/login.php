@@ -51,12 +51,28 @@ class userinfo
     }
 }
 
+class user
+{
+    var $code;
+    var $msg;
+    function setCode($params)
+    {
+        $this->code = $params;
+    }
+
+    function setMsg($params)
+    {
+        $this->msg = $params;
+    }
+}
+
 $sql = "SELECT * FROM userinfo WHERE username='adm' AND password='123456'";
 
 $res = mysqli_query($conn, $sql);
 $resmysql = mysqli_fetch_assoc($res);
 
 $result = new userinfo();
+$resUser = new user();
 
 
 if (!empty($resmysql)) {
@@ -69,10 +85,9 @@ if (!empty($resmysql)) {
     $result->setPhone($resmysql['phone']);
     $result->setEmail($resmysql['email']);
     setcookie("user", crypt($resmysql['username'], $resmysql['password']), time() + 3600);
+    echo json_encode($result);
 } else {
-    $result->setCode(1);
-    $result->setMsg('失败');
-    
+    $resUser->setCode(1);
+    $resUser->setMsg('失败');
+    echo json_encode($resUser);
 }
-
-echo json_encode($result);
