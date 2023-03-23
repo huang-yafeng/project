@@ -3,21 +3,18 @@ import { connect } from "react-redux"
 import { Button, Space } from 'antd-mobile'
 
 import { add, query } from "../../action/userAction"
-import userModel from "../../server/userServer"
 import './index.less'
 
 function Login(props: any) {
 
-    const getAdd = async () => {
-        const { data } = await userModel.query({})
-        console.log(data, 'data');
+    const getAdd = () => {
 
     }
 
     return (
         <div>
             <Space wrap>
-                <Button color='primary' fill='solid'>
+                <Button color='primary' fill='solid' onClick={getAdd}>
                     Solid
                 </Button>
                 <Button color='primary' fill='outline'>
