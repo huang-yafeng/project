@@ -5,13 +5,19 @@ import { useNavigate } from "react-router-dom"
 
 import { add, query } from "../../action/userAction"
 import Header from "./header";
+import { Usequery } from "../../server/userServer"
 
 function Login(props: any) {
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
-    const onFinish =  (values: Object) => {
-        
-        history('/home')
+    const onFinish = async (values: Object) => {
+        const data = await Usequery(values);
+        console.log(data, 'data');
+        // if () {
+
+        // }
+
+        // history('/home')
     }
 
     return (

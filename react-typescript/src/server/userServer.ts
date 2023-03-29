@@ -1,18 +1,9 @@
-import axios from "./axios";
+import request from "./axios";
 
-export default {
-    query: (params: any) => {
-        return axios({
-            method: "POST",
-            url: "/api/login.php",
-            params
-        })
-    },
-    add: (data: any) => {
-        return axios({
-            method: "POST",
-            url: "/api/",
-            data
-        })
-    }
+export const Usequery=(params:any)=>{
+    return request({
+        url:"http://localhost:2345/users",
+        method:"GET",
+        params
+    })
 }
