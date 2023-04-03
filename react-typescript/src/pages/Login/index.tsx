@@ -10,9 +10,9 @@ import { Usequery } from "../../server/userServer"
 function Login(props: any) {
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
-    const onFinish =  (values: Object) => {
-      
-        // history('/home')
+    const onFinish = (values: Object) => {
+
+        history('/home')
     }
 
     return (
@@ -44,7 +44,11 @@ function Login(props: any) {
                     <Input placeholder='请输入用户名' />
                 </Form.Item>
                 <Form.Item
-                    rules={[{ required: true, message: '请填写6到10位的密码', pattern: /^[a-zA-Z0-9]{6,10}$/ }]}
+                    rules={[{
+                        required: true,
+                        message: '请填写6到10位的密码',
+                        pattern: /^[a-zA-Z0-9]{6,10}$/
+                    }]}
                     name='password'
                     label='密码'
                 >
