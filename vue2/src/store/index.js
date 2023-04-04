@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    dataList:[],
+    dataNum:"vuex中的数据",
   },
   getters: {
   },
