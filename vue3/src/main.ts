@@ -11,4 +11,3 @@ app.use(router);
 app.use(ElementPlus);
 app.mount("#app");
 
-// createApp(App).use(store).use(router).mount('#app')
