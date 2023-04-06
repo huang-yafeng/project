@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux"
-import { Button, Input, Form } from 'react-vant'
+import { Button, Input, Form, Radio } from 'react-vant'
 import { useNavigate } from "react-router-dom"
 
 import { add, query } from "../../action/userAction"
@@ -8,11 +8,23 @@ import Header from "./header";
 import { Usequery } from "../../server/userServer"
 
 function Register(props: any) {
+    const [userId, setuserId] = useState('1')
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
     const onFinish = (values: Object) => {
-        console.log(values,'参数',history);
+        console.log(values, '参数', history);
     }
+
+    const getUserId = (params: any) => {
+        console.log(params, 'params');
+        setuserId(params)
+
+    }
+
+    useEffect(() => {
+        console.log(userId, 'userid');
+
+    }, [])
 
     return (
         <div className={'Register'}>
@@ -69,13 +81,17 @@ function Register(props: any) {
 
                 <Form.Item
                     rules={[{
-                        required: true,
+                        required: false,
                         message: '请选择职位',
                     }]}
                     name='userid'
                     label='用户身份'
+                    initialValue={userId}
                 >
-                    <Input placeholder='请选择职位' />
+                    <Radio.Group onChange={getUserId} value={userId}>
+                        <Radio name="1">管理员</Radio>
+                        <Radio name="2">普通用户</Radio>
+                    </Radio.Group>
                 </Form.Item>
 
 
