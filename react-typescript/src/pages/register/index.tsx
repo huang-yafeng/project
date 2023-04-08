@@ -5,26 +5,27 @@ import { useNavigate } from "react-router-dom"
 
 import { add, query } from "../../action/userAction"
 import Header from "./header";
-import { Usequery } from "../../server/userServer"
+import userServer from "../../server/userServer"
 
 function Register(props: any) {
     const [userId, setuserId] = useState('1')
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
-    const onFinish = (values: Object) => {
-        console.log(values, '参数', history);
+    const onFinish = async (values: Object) => {
+        // console.log(values, '参数');
+        const data = await userServer.userAdd(values)
+        console.log(data, 'data');
+
     }
 
     const getUserId = (params: any) => {
-        console.log(params, 'params');
         setuserId(params)
-
     }
 
-    useEffect(() => {
-        console.log(userId, 'userid');
-
-    }, [])
+    const getback = () => {
+        //    window.history.back()
+        history(-1)
+    }
 
     return (
         <div className={'Register'}>
@@ -37,7 +38,7 @@ function Register(props: any) {
                         <Button round nativeType='submit' type='primary' block>
                             注册
                         </Button>
-                        <Button round block>
+                        <Button round block onClick={getback}>
                             返回
                         </Button>
                     </div>
@@ -72,7 +73,7 @@ function Register(props: any) {
                         message: '请输入手机号码',
                         // pattern: /^[a-zA-Z][a-zA-Z0-9]{3,15}$/
                     }]}
-                    name='phone'
+                    name='userPhone'
                     label='手机号码'
                 >
                     <Input placeholder='请输入手机号码' />
@@ -84,7 +85,7 @@ function Register(props: any) {
                         required: false,
                         message: '请选择职位',
                     }]}
-                    name='userid'
+                    name='userId'
                     label='用户身份'
                     initialValue={userId}
                 >
@@ -101,7 +102,7 @@ function Register(props: any) {
                         message: '请输入邮箱',
                         pattern: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
                     }]}
-                    name='email'
+                    name='userEmail'
                     label='邮箱'
                 >
                     <Input placeholder='请输入邮箱' />

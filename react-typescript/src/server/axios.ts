@@ -1,34 +1,23 @@
-import axios from "axios";
+import request from "axios";
 import { Notify } from 'react-vant';
 
-const request = axios.create({
-    baseURL: "http://localhost",
-    timeout: 5000,//
-})
+request.interceptors.response.use((response) => {
+    return response.data
+}, error => {
+    if (error.response) {
+        switch (error.response.status) {
+            case 500:
+                return Notify.show("接口错误500");
+            case 401:
+                return Notify.show('参数错误')
+                break;
 
-request.interceptors.request.use(function (config) {
-    //发送请求之前干啥
-    return config;
-}, function (error) {
-
-    //对错误的请求做啥
-    return error;
-})
-
-request.interceptors.response.use(function (response) {
-    switch (response.status) {
-        case 200:
-            return response.data
-        case 500:
-            return Notify.show('接口500报错');
-
-        default:
-            break;
+            default:
+                break;
+        }
+        return Promise.reject(error.response.data)
     }
-    return response;
-}, function (error) {
-    //对响应错误做点什么
-    return Promise.reject(error)
-})
+}
+)
 
 export default request;
