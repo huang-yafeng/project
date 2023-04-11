@@ -8,8 +8,6 @@ request.interceptors.response.use((response) => {
         switch (error.response.status) {
             case 500:
                 return Notify.show("接口错误500");
-            case 401:
-                return Notify.show('参数错误')
                 break;
 
             default:

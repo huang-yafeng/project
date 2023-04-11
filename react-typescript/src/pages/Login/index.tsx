@@ -1,18 +1,27 @@
 import React from "react";
 import { connect } from "react-redux"
-import { Button, Input, Form } from 'react-vant'
+import { Button, Input, Form, Notify } from 'react-vant'
 import { useNavigate } from "react-router-dom"
 
 import { add, query } from "../../action/userAction"
 import Header from "./header";
-import { Usequery } from "../../server/userServer"
+
+import userServe from "../../server/userServer";
 
 function Login(props: any) {
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
-    const onFinish = (values: Object) => {
-
-        history('/home')
+    const onFinish = async (values: Object) => {
+        const data: any = await userServe.userLogin(values)
+        console.log(data.token, 'data');
+        if (data.code === 0) {
+            window.localStorage.setItem('user', data.token)
+            Notify.show({ type: 'primary', message: data.msg })
+            //2秒钟后跳转路由
+            setTimeout(() => {
+                history('/home')
+            }, 2000)
+        }
     }
 
     return (
