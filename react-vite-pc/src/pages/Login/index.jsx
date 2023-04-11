@@ -1,26 +1,68 @@
-// import './ThreeMap.css';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect} from 'react';
+import {Button, Checkbox, Form, Input} from 'antd';
 
 function ThreeMap() {
-    const [num, setNum] = useState(1)
 
-    const add = () => {
-        setNum(num + 1); setNum(num + 1); setNum(num + 1)
-        console.log(num, 'num');
-    }
-    console.log(num, '同步更新');
+    const onFinish = (values) => {
+        console.log('Success:', values);
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
 
     useEffect(() => {
-        console.log('页面加载完成');
+        console.log("页面加载完成")
     }, [])
 
+    return (<div id='container'>
+            <Form
+                name="basic"
+                labelCol={{
+                    span: 8,
+                }}
+                wrapperCol={{
+                    span: 16,
+                }}
+                style={{
+                    maxWidth: 600,
+                }}
+                initialValues={{
+                    remember: true,
+                }}
+                onFinish={onFinish}
+                autoComplete="off"
+            >
+                <Form.Item
+                    label="Username"
+                    name="username"
+                    rules={[{
+                        required: true, message: 'Please input your username!',
+                    },]}
+                >
+                    <Input/>
+                </Form.Item>
 
-    return (
-        <div id='container'>
-            首页
-            <h1>{num}</h1>
-            <button onClick={add}>+1</button>
-        </div>
-    )
+                <Form.Item
+                    label="Password"
+                    name="password"
+                    rules={[{
+                        required: true, message: 'Please input your password!',
+                    },]}
+                >
+                    <Input.Password/>
+                </Form.Item>
+
+                <Form.Item
+                    wrapperCol={{
+                        offset: 8, span: 16,
+                    }}
+                >
+                    <Button type="primary" htmlType="submit">
+                        Submit
+                    </Button>
+                </Form.Item>
+            </Form>
+        </div>)
 }
+
 export default ThreeMap;

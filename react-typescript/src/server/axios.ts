@@ -9,6 +9,18 @@ request.create({
     timeout: 5000,//请求超时
 })
 
+request.interceptors.request.use((config) => {
+    // const token=window.localStorage.getItem('token');
+    // if(token){
+    //     config.headers.common['token']=token
+    // }
+    return config;
+}, error => {
+    return Promise.reject(error);
+})
+
+
+
 request.interceptors.response.use((response) => {
     return response.data
 }, error => {

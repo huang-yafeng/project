@@ -12,11 +12,12 @@ function Login(props: any) {
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
     const onFinish = async (values: Object) => {
-        const data: any = await userServe.userLogin(values)
-        console.log(data.token, 'data');
-        if (data.code === 0) {
-            window.localStorage.setItem('user', data.token)
-            Notify.show({ type: 'primary', message: data.msg })
+        const res: any = await userServe.userLogin(values)
+
+        if (res.code === 0) {
+            window.localStorage.setItem('user', res.token)
+            Notify.show({ type: 'primary', message: res.msg })
+            props.add(res.data)
             //2秒钟后跳转路由
             setTimeout(() => {
                 history('/home')
@@ -35,7 +36,9 @@ function Login(props: any) {
                         <Button round nativeType='submit' type='primary' block>
                             登录
                         </Button>
-                        <Button round block>
+                        <Button round block onClick={() => {
+                            history('/register')
+                        }}>
                             注册
                         </Button>
                     </div>

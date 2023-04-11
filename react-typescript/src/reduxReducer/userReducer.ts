@@ -1,9 +1,6 @@
 import userType from "../models/userType";
 
-const params = {
-    name: "admin",
-    dataList: []
-}
+const params = {}
 
 const userReducer = (state = params, action: any) => {
     switch (action.type) {

@@ -14,5 +14,4 @@ const add = (params: any) => {
     }
 }
 
-
 export { add, query }
