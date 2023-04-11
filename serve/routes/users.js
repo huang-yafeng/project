@@ -20,13 +20,13 @@ router.post('/login', async function (req, res, next) {
       userId: data[0].userId,
       userPhone: data[0].userPhone,
       userEmail: data[0].userEmail,
-      token: token
     }
 
     res.json({
       code: 0,
       msg: "成功",
-      data: userinfo
+      data: userinfo,
+      token: token
     })
   } else {
     //查询不到
