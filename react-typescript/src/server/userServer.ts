@@ -14,6 +14,13 @@ const userServe = {
             url: "/api/users/login",
             data
         })
+    },
+    add: (data: any) => {
+        return request({
+            method: "POST",
+            url: "/api/uploadpictures/add",
+            data
+        })
     }
 }
 
