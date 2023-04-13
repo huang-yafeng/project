@@ -14,7 +14,6 @@ export default defineConfig({
             resolvers: [ElementPlusResolver(),AntDesignVueResolver()],
         }),
     ],
-
     //配置反向代理
     server: {
         host: 'localhost',  // 启动后浏览器窗口输入地址就可以进行访问
@@ -37,10 +36,6 @@ export default defineConfig({
     },
     //
     resolve:{
-        // alias:[{
-        //     find:"@",
-        //     replacement: path.resolve(__dirname,'/src')
-        // }]
         alias:{
             "@":path.resolve(__dirname,'./src')
         }
