@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux"
 import { Button, Input, Form, Notify } from 'react-vant'
 import { useNavigate } from "react-router-dom"
@@ -9,21 +9,42 @@ import Header from "./header";
 import userServe from "../../server/userServer";
 
 function Login(props: any) {
+    const [flag, setFlag] = useState(false)
     const [form] = Form.useForm();
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
     const onFinish = async (values: Object) => {
-        const res: any = await userServe.userLogin(values)
-
-        if (res.code === 0) {
-            window.localStorage.setItem('user', res.token)
-            Notify.show({ type: 'primary', message: res.msg })
-            props.add(res.data)
-            //2秒钟后跳转路由
-            setTimeout(() => {
-                history('/home')
-            }, 2000)
+        if (flag === true) {
+            history('/home')
+        } else {
+            const res: any = await userServe.query(values)
+            if (res.code === 0) {
+                window.localStorage.setItem('user', res.token)
+                Notify.show({ type: 'primary', message: res.msg })
+                props.add(res.data)
+                //2秒钟后跳转路由
+                setTimeout(() => {
+                    history('/home')
+                }, 2000)
+            }
         }
+
     }
+
+    const handUserinfo = () => {
+
+        const token = window.localStorage.getItem('user');
+        console.log(token, 'token');
+        if (token) {
+            setFlag(true)
+            history('/home')
+        }
+
+
+    }
+
+    useEffect(() => {
+        handUserinfo()
+    }, [])
 
     return (
         <div className={'login'}>

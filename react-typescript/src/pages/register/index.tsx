@@ -15,7 +15,7 @@ function Register(props: any) {
     const history = useNavigate() //react-router-dom6版本函数组件路由跳转
 
     const onFinish = async (values: any) => {
-        const res: any = await userServer.userAdd(values)
+        const res: any = await userServer.add(values)
         if (res.code === 200) {
             Notify.show({ type: 'primary', message: res.msg })
             let params = {
@@ -33,7 +33,7 @@ function Register(props: any) {
     }
 
     const userLogin = async (params: Object) => {
-        const res: any = await userServer.userLogin(params)
+        const res: any = await userServer.query(params)
         console.log(res, '登录');
 
         if (res.code === 0) {
