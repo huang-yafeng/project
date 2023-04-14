@@ -1,32 +1,25 @@
 <template>
-    <div class="login">
-        <div class="center">
-            <el-form :model="form" label-width="120px">
-                <el-form-item label="用户名">
-                    <el-input v-model="form.username" />
-                </el-form-item>
-                <el-form-item label="密码">
-                    <el-input v-model="form.password" />
-                </el-form-item>
+    <van-tabs v-model:active="active">
+<!--        @click-tab="onClickTab"-->
+        <van-tab title="登录">
+            <Login />
+        </van-tab>
+        <van-tab title="注册">
+            <Register @getLogin="getLogin"/>
+        </van-tab>
+    </van-tabs>
 
-                <el-form-item>
-                    <el-button type="primary" @click="onSubmit">登录</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-    </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-import "./index.scss"
-const form = reactive({
-    username: "",
-    password: "",
-})
+import { ref } from 'vue';
+import Login from "@/pages/Login/Login.vue";
+import Register from "@/pages/Login/register.vue";
 
-const onSubmit = () => {
-    console.log(form, 'name')
+const active = ref<Number>(0);
+const getLogin=(item:Number)=>{
+    active.value=item;
 }
+
 
 </script>
