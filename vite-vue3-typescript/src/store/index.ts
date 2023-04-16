@@ -7,8 +7,6 @@ const store=createStore({
     getters:{},
     mutations:{
         add(state,action){
-            console.log(state,'state')
-            console.log(action,'action')
             state.num=state.num+action;
         }
     },
