@@ -1,0 +1,24 @@
+import React from "react";
+import { Swiper, Image } from 'react-vant';
+
+function Swiper(props:any){
+    const images = [
+        'https://img.yzcdn.cn/vant/apple-1.jpg',
+        'https://img.yzcdn.cn/vant/apple-2.jpg',
+        'https://img.yzcdn.cn/vant/apple-3.jpg',
+        'https://img.yzcdn.cn/vant/apple-4.jpg',
+        'https://img.yzcdn.cn/vant/apple-5.jpg',
+        'https://img.yzcdn.cn/vant/apple-6.jpg',
+        'https://img.yzcdn.cn/vant/apple-7.jpg',
+        'https://img.yzcdn.cn/vant/apple-8.jpg',
+    ]
+    return (
+        <div>
+            <Swiper autoplay={2000}>
+
+            </Swiper>
+        </div>
+    )
+}
+
+export default Swiper;

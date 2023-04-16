@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import { HashRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 import Loading from "./loading";
 
 let Login = lazy(() => import("../pages/Login"))
