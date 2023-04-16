@@ -1,9 +1,5 @@
 <template>
     <van-tabs v-model:active="active">
-<<<<<<< HEAD
-=======
-<!--        @click-tab="onClickTab"-->
->>>>>>> 7b5702d7863158e9163016996300bf1269802dbb
         <van-tab title="登录">
             <Login />
         </van-tab>
