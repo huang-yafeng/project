@@ -5,7 +5,6 @@ const params={
 }
 
 const userReducer=(state=params,action:any)=>{
-    console.log(action,'aaa')
     switch (action.type) {
         case userType.user_query:
             return {...state.data,...action.payload};

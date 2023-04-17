@@ -1,7 +1,7 @@
 import request from "axios";
 
 request.create({
-    baseURL:"",
+    baseURL:"/api",
     headers:{
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
     },

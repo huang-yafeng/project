@@ -1,32 +1,44 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux"
 import userAction from "@/action/userAction";
-function Mine(props:any){
-    console.log(props,'props')
-    const add=()=>{
-        const params=[
-            {
-                id:1,
-                msg:"redux1"
-            },
-            {
-                id:2,
-                msg:"redux2"
-            }
-        ]
-        props.add(params);
+import {Button, Tabs} from 'antd';
+import type {TabsProps} from 'antd';
+
+import Login from "./component/Login";
+import Register from "./component/Register";
+
+import './index.scss'
+
+
+function Mine(props: any) {
+    const [activeKey, selectiveKey] = useState('1');
+    const items: TabsProps['items'] = [
+        {
+            key: '1',
+            label: `登录`,
+            children: <Login/>,
+        },
+        {
+            key: '2',
+            label: `注册`,
+            children: <Register/>,
+        }
+    ];
+
+    const onChange = (key: any) => {
+        selectiveKey(key)
     }
+
     return (
-        <div>
-            Mine;
-            <button onClick={add}>添加数据</button>
+        <div className={'mine'}>
+            <Tabs defaultActiveKey="1" activeKey={activeKey} items={items} onChange={onChange}/>
         </div>
     )
 }
 
-const mapStateToProps=((state:any)=>({...state}))
-const mapDispatchToProps={
-    add:userAction.add
+const mapStateToProps = ((state: any) => ({...state}))
+const mapDispatchToProps = {
+    add: userAction.add
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Mine);
+export default connect(mapStateToProps, mapDispatchToProps)(Mine);
