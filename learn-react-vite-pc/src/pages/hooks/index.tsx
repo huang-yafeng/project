@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import UseReducer from "./useReducer";
-import { log } from 'console';
 function Hooks(props: any) {
     const { } = props;
     const [num, setnum] = useState(10)
